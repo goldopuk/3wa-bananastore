@@ -1,8 +1,7 @@
 <?php
 
-
-
 function getProductList() {
+
 	$user = 'root';
 	$password = 'troiswa';
 
@@ -10,13 +9,9 @@ function getProductList() {
 
 	$sql = "SELECT * FROM product";
 
-	$statement = $db->query($sql, \PDO::FETCH_ASSOC);
-
-	$products = [];
-
-	foreach ($statement as $product)  {
-		$products[] = $product;
-	}
+	$statement = $db->prepare($sql);
+	$statement->execute();
+	$products = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
 	return $products;
 }
