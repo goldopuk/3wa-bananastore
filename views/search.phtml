@@ -1,0 +1,26 @@
+<?php include 'header.phtml'; ?>
+
+<h1>Recherche</h1>
+	
+
+<?php if (count($products) == 0): ?>
+
+	Produit introuvable
+
+<?php else: ?>
+	<ul>
+
+		<?php foreach ($products as $product): ?>
+		<li>
+			<img src="<?= $product['image'] ?>">
+			<h3><?= $product['name'] ?></h3>
+			<p>Prix: <?= $product['price'] ?></p>
+			<p>Stock: <?= $product['quantity'] ?></p>
+		</li>
+		<?php endforeach ?>
+
+	</ul>
+<?php endif ?>
+
+
+<?php include 'footer.phtml'; ?>
