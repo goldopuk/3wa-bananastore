@@ -2,11 +2,29 @@
 <html>
 <head>
 	<title></title>
+
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
 	<header>
-		<form action="search.php" method="get">
 
+		<?php if (isset($_SESSION['iduser'])): ?>
+			
+			<?php
+				$me = getUserById($_SESSION['iduser']);
+			?>
+
+			Bonjour <?= $me['firstname'] ?> <?= $me['lastname'] ?>
+
+			<a href="logout.php">Se déconnecter</a>
+
+		<?php else: ?>
+			
+			<a href="login.php">S'identifier</a>
+
+		<?php endif; ?>
+
+		<form action="search.php" method="get">
 			Recherche: <input name="word">
 		</form>
 	</header>

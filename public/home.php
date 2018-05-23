@@ -1,6 +1,5 @@
 <?php
-include '../services/tools.php';
-include '../services/productService.php';
+include '../bootstrap.php';
 
 $products = getProductList();
 
