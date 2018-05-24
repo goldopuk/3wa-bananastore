@@ -21,3 +21,16 @@ function getProductList($word = null) {
 
 	return $products;
 }
+
+function getProductById($id) {
+	
+	$sql = "SELECT * FROM product WHERE id = $id";
+
+	$db = new PDO('mysql:host=localhost;dbname=bananastore', 'root', 'troiswa');
+
+	$statement = $db->prepare($sql);
+	$statement->execute();
+	$product = $statement->fetch(\PDO::FETCH_ASSOC);
+
+	return $product;
+}
